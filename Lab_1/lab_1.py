@@ -57,7 +57,7 @@ def print_board(board):
 
 
 n_queens = 8
-max_iterations = 100000
+max_iterations = 1000000
 max_temperature = 10
 
 solution = simulated_annealing(n_queens, max_iterations, max_temperature)

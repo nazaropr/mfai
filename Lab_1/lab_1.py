@@ -1,6 +1,6 @@
 import random
 import math
-
+#Визначення ціни дошки
 def get_board_cost(board):
     cost = 0
     for i in range(len(board)):
@@ -8,7 +8,7 @@ def get_board_cost(board):
             if board[i] == board[j] or abs(board[i] - board[j]) == j - i:
                 cost += 1
     return cost
-
+#Зміна випадковим чином положення одного ферзя в існуючій дошці
 def get_neighbor(board):
     neighbor = board.copy()
     i = random.randint(0, len(board)-1)
@@ -16,6 +16,7 @@ def get_neighbor(board):
     neighbor[i] = j
     return neighbor
 
+# Алгоритм імітації відпалу
 def simulated_annealing(n_queens, max_iterations, max_temperature):
     initial_board = [random.randint(0, n_queens-1) for _ in range(n_queens)]
     current_board = initial_board
@@ -42,7 +43,7 @@ def simulated_annealing(n_queens, max_iterations, max_temperature):
                 current_board = neighbor
                 current_cost = neighbor_cost
     return None
-
+#Вивід дошки в консоль
 def print_board(board):
 
     for row in range(len(board)):
@@ -56,9 +57,13 @@ def print_board(board):
     print()
 
 
-n_queens = 8
+n_queens = 15
 max_iterations = 1000000
 max_temperature = 10
+
+initial_board = [random.randint(0, n_queens-1) for _ in range(n_queens)]
+print("Початкова дошка:")
+print_board(initial_board)
 
 solution = simulated_annealing(n_queens, max_iterations, max_temperature)
 
